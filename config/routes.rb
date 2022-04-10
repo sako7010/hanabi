@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+  resources :users, only: [:show]
   root               to: 'static_pages#home'
   get :about,        to: 'static_pages#about'
   get :terms,        to: 'static_pages#terms'
