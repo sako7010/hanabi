@@ -7,8 +7,8 @@ RSpec.describe "StaticPages", type: :system do
         visit root_path
       end
 
-      it "エンカの文字が表示されていること" do
-        expect(page).to have_content 'エンカ'
+      it "「きれいな花火　一緒に観よ」の文字が表示されていること" do
+        expect(page).to have_content 'きれいな花火　一緒に観よ'
       end
     end
   end
