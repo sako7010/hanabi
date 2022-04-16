@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   describe "プロフィールページ" do
     let(:user) { create(:user) }
+
     context "ページレイアウト" do
       before do
         visit user_path(user.id)
@@ -18,7 +19,7 @@ RSpec.describe "Users", type: :request do
       end
     end
   end
-  
+
   describe "新規登録ページ" do
     before do
       visit new_user_registration_path
@@ -59,6 +60,7 @@ RSpec.describe "Users", type: :request do
 
   describe "ログインページ" do
     let(:user) { create(:user) }
+
     before do
       visit new_user_session_path
     end
@@ -91,9 +93,9 @@ RSpec.describe "Users", type: :request do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       # ログインボタンをクリックする
-      within ".actions" do 
-        click_button 'ログイン' 
-      # ログインに成功したことを検証する
+      within ".actions" do
+        click_button 'ログイン'
+        # ログインに成功したことを検証する
         expect(current_path).to eq root_path(user)
       end
     end
@@ -104,9 +106,9 @@ RSpec.describe "Users", type: :request do
       fill_in 'user[email]', with: ''
       fill_in 'user[password]', with: ''
       # ログインボタンをクリックする
-      within ".actions" do 
-        click_button 'ログイン' 
-      # ログインに成功したことを検証する
+      within ".actions" do
+        click_button 'ログイン'
+        # ログインに成功したことを検証する
         expect(current_path).to eq new_user_session_path
       end
     end
@@ -114,11 +116,6 @@ RSpec.describe "Users", type: :request do
     it "新規登録をクリックしたら新規登録画面へ遷移すること" do
       click_link "ユーザー登録"
       expect(page).to have_current_path new_user_registration_path
-    end
-
-    it "「パスワードを忘れた場合はこちら」をクリックしたらForgot your password?画面へ遷移すること" do
-      click_link "パスワードを忘れた場合はこちら"
-      expect(page).to have_current_path new_user_password_path
     end
 
     it "「パスワードを忘れた場合はこちら」をクリックしたらForgot your password?画面へ遷移すること" do
