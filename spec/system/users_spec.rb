@@ -138,7 +138,7 @@ RSpec.describe "Users", type: :request do
         visit user_path(user.id)
         click_link "登録内容編集"
       end
-    
+
       it "プロフィールの更新ができること" do
         fill_in "user[user_name]", with: "Edit Example User"
         fill_in "user[email]", with: "edit-user@example.com"

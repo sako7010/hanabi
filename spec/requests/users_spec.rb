@@ -23,7 +23,7 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(200)
     end
   end
-  
+
   describe "プロフィール画面" do
     context 'ログインしている場合' do
       before do
