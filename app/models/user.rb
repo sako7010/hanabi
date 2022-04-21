@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 200 }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :avatar
 
   private
 
