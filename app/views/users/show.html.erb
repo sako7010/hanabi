@@ -1,7 +1,24 @@
 <% provide(:title, "プロフィール") %>
-<h1>プロフィール</h1>
-<%= @user.id %>
-<%= @user.user_name %>
-<%= @user.email %><br>
-<%= @user.profile %><br>
-<%= @user.created_at %>, <%= @user.updated_at %><br>
+<div class="container">
+  <h3 class="title-profile">プロフィール</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class:"border border-secondary rounded-circle", size:"200x200" %>
+      <% else %>
+        画像なし
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <h4 class="show-user-name"><%= @user.user_name %></h4>
+      <div>
+        <%= @user.profile %>
+      </div>
+      <% if current_user == @user %>
+        <div class="account-edit">
+          <%= link_to "登録内容編集", edit_user_registration_path(@user) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,25 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe "プロフィールページ" do
-    let(:user) { create(:user) }
-
-    context "ページレイアウト" do
-      before do
-        visit user_path(user.id)
-      end
-
-      it "「プロフィール」の文字列が存在することを確認" do
-        expect(page).to have_content 'プロフィール'
-      end
-
-      it "ユーザー情報が表示されることを確認" do
-        expect(page).to have_content user.user_name
-        expect(page).to have_content user.profile
-      end
-    end
-  end
-
   describe "新規登録ページ" do
     before do
       visit new_user_registration_path
@@ -121,6 +102,63 @@ RSpec.describe "Users", type: :request do
     it "「パスワードを忘れた場合はこちら」をクリックしたらForgot your password?画面へ遷移すること" do
       click_link "パスワードを忘れた場合はこちら"
       expect(page).to have_current_path new_user_password_path
+    end
+  end
+
+  describe "プロフィールページ" do
+    let(:user) { create(:user) }
+
+    context "ページレイアウト" do
+      before do
+        sign_in user
+        visit user_path(user.id)
+      end
+
+      it "「プロフィール」の文字列が存在することを確認" do
+        expect(page).to have_content 'プロフィール'
+      end
+
+      it "ユーザー情報が表示されることを確認" do
+        expect(page).to have_content user.user_name
+      end
+
+      it "「登録内容編集」をクリックで登録内容編集画面に遷移すること" do
+        click_link "登録内容編集"
+        expect(page).to have_current_path edit_user_registration_path(user.id)
+      end
+    end
+  end
+
+  describe "プロフィール編集ページ" do
+    let(:user) { create(:user) }
+
+    context "ページレイアウト" do
+      before do
+        sign_in user
+        visit user_path(user.id)
+        click_link "登録内容編集"
+      end
+
+      it "プロフィールの更新ができること" do
+        fill_in "user[user_name]", with: "Edit Example User"
+        fill_in "user[email]", with: "edit-user@example.com"
+        fill_in 'user[current_password]', with: user.password
+        click_button "更新"
+        expect(page).to have_current_path user_path(user.id)
+      end
+
+      it "パスワードの変更ができること" do
+        fill_in "user[password]", with: "123456"
+        fill_in "user[password_confirmation]", with: "123456"
+        fill_in 'user[current_password]', with: user.password
+        click_button "更新"
+        expect(page).to have_current_path user_path(user.id)
+      end
+
+      it "アカウントの削除ができること" do
+        click_button "アカウントを削除"
+        expect(page).to have_current_path root_path
+      end
     end
   end
 end
