@@ -1,0 +1,2 @@
+class Hanabi < ApplicationRecord
+end
