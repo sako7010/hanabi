@@ -47,7 +47,6 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'rubocop-airbnb'
   gem 'pry-byebug'
-  gem 'faker'
 end
 
 group :test do
@@ -56,6 +55,7 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
