@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :users, only: [:show]
+  resources :hanabis
+
   root               to: 'static_pages#home'
   get :about,        to: 'static_pages#about'
   get :terms,        to: 'static_pages#terms'
