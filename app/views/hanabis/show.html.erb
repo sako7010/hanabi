@@ -1,2 +1,16 @@
-<h1>Hanabis#show</h1>
-<p>Find me in app/views/hanabis/show.html.erb</p>
+<% provide(:title, "#{@hanabi.title}") %>
+<div class="container">
+  <div class="row">
+    <h2 class="hanabi-name"><%= @hanabi.title %></h2>
+    <h2 class="hanabi-name"><%= @hanabi.address %></h2>
+    <h4><%= @hanabi.body %></h4>
+    <%= attachment_image_tag @hanabi, :image %>
+    <h4 class="hanabi-reference">説明：<%= link_to "#{@hanabi.body}", @hanabi.body, target: "_blank" %></h4>
+  </div>
+  <div class="change-hanabi">
+    <% if current_user == @hanabi.user %>
+      <%= link_to "編集", edit_hanabi_path(@hanabi), class: 'edit-hanabi' %>　
+      <%= button_to "削除", hanabi_path(@hanabi), method: :delete , data:{confirm: "本当に削除しますか？"} ,class: 'edit-hanabi' %>
+    <% end %>
+  </div>
+</div>

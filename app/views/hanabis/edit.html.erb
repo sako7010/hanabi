@@ -1,2 +1,25 @@
-<h1>Hanabis#edit</h1>
-<p>Find me in app/views/hanabis/edit.html.erb</p>
+<% provide(:title, "花火スポットの編集") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with model: @hanabi, local: true do |f| %>
+        <div class = 'form-group'>
+          <%= f.label :タイトル %>　<span class="input-need">※必須</span>
+          <%= f.text_field :title, class: 'form-control', id: '' %>
+        </div>
+        <div class = 'form-group'>
+          <%= f.label :住所 %>
+          <%= f.text_field :address %>
+        </div>
+        <div class = 'form-group'>
+          <%= f.label :説明 %>
+          <%= f.text_field :body %>
+        </div>
+        <div class = 'form-group'>
+          <%= f.attachment_field :image %> 
+        </div>
+        <%= f.submit "更新する", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

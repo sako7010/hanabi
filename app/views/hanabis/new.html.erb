@@ -1,2 +1,10 @@
-<h1>Hanabis#new</h1>
-<p>Find me in app/views/hanabis/new.html.erb</p>
+<% provide(:title, "花火スポット登録") %>
+<div class="container">
+  <h1>花火スポット登録</h1>
+  <%= render 'shared/error' , obj:@hanabi%>
+  <div class="row">
+    <div class="col-sm-5 mx-auto mt-5">
+      <%= render 'hanabis/hanabi_form' %>
+    </div>
+  </div>
+</div>
