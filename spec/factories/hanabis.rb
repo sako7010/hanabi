@@ -5,5 +5,6 @@ FactoryBot.define do
     body { "ここからは小さいけど丸いのが見える！　近くにカフェあるよ！" }
     image_id { "MyString" }
     address { "Faker::Address.street_address" }
+    association :user
   end
 end
