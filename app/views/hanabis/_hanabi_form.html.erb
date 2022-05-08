@@ -1,0 +1,19 @@
+<%= form_with model: @hanabi, local: true do |f| %>
+  <div class = 'form-group'>
+    <%= f.label :タイトル %>　<span class="input-need">※必須</span>
+    <%= f.text_field :title, class: 'form-control', id: '' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :住所 %>
+    <%= f.text_field :address %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :説明 %>
+    <%= f.text_field :body %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.attachment_field :image %> 
+  </div>
+  <%= f.submit nil, class: 'btn btn-primary' %>
+<% end %>
+
