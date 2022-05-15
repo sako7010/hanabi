@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions'
-}
+    sessions: 'admins/sessions',
+  }
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
   }
   resources :users, only: [:show]
   resources :hanabis

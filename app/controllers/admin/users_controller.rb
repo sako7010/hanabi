@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :if_not_admin
-  before_action :set_restaurant, only: [:show, :edit, :destroy]
+  before_action :set_restaurant, only: %i(show edit destroy)
 
   private
 

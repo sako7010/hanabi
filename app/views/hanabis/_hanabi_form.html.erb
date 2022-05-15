@@ -1,15 +1,15 @@
 <%= form_with model: @hanabi, local: true do |f| %>
   <div class = 'form-group'>
-    <%= f.label :タイトル %>　<span class="input-need">※必須</span>
-    <%= f.text_field :title, class: 'form-control', id: '' %>
+    <%= f.label :title %>　<span class="input-need">※必須</span>
+    <%= f.text_field :title, class: 'form-control', id: 'hanabi_title' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :住所 %>
-    <%= f.text_field :address %>
+    <%= f.label :address %>
+    <%= f.text_field :address, class: 'form-control', id: 'address' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :説明 %>
-    <%= f.text_field :body %>
+    <%= f.label :body %>
+    <%= f.text_field :body, class: 'form-control', id: 'explanation' %>
   </div>
   <div class = 'form-group'>
     <%= f.attachment_field :image %> 

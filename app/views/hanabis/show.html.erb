@@ -10,7 +10,7 @@
   <div class="change-hanabi">
     <% if current_user == @hanabi.user %>
       <%= link_to "編集", edit_hanabi_path(@hanabi), class: 'edit-hanabi' %>　
-      <%= button_to "削除", hanabi_path(@hanabi), method: :delete , data:{confirm: "本当に削除しますか？"} ,class: 'edit-hanabi' %>
+      <%= button_to "削除", hanabi_path(@hanabi), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'destroy-hanabi' %>
     <% end %>
   </div>
 </div>
