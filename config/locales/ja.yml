@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      hanabi: 花火
     attributes:
       user:
         id: ID
@@ -9,3 +10,9 @@ ja:
         description: 説明
         created_at: 登録日時
         updated_at: 更新日時
+      hanabi:
+        id: ID
+        title:  タイトル
+        body: 説明
+        address: 住所
+        image: 画像

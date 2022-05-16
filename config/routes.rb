@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions'
-}
+    sessions: 'admins/sessions',
+  }
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
   }
   resources :users, only: [:show]
+  resources :hanabis
+
   root               to: 'static_pages#home'
   get :about,        to: 'static_pages#about'
   get :terms,        to: 'static_pages#terms'

@@ -1,0 +1,35 @@
+<div class = "container-fluid">
+  <div class = "hanabi-posts m-4">
+    <h1 class = "pb-2">あなたが登録したスポット一覧</h1>
+      <table class = "hanabi-table border-top mx-3">
+        <thead>
+          <tr class = "border-bottom">
+            <th class = "col-3 text-center py-2">画像</th>
+            <th class = "col-2 text-center py-2">タイトル</th>
+            <th class = "col-3 text-center py-2">住所</th>
+            <th class = "col-2 text-center py-2">説明</th>
+            <th class = "col-2 text-center py-2">作成日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @hanabis.each do |hanabi| %>
+            <% if hanabi.user_id == current_user.id %>  
+              <tr class = "border-bottom  py-2">
+                <div>
+                  <td class = "p-2 text-center">
+                    <%= link_to hanabi_path(hanabi) do %>
+                      <%= attachment_image_tag hanabi,:image, class:"hanabi-img-reg" %>
+                    <% end %>
+                  </td>
+                  <td class = "px-2 text-center"><%= link_to hanabi.title , hanabi_path(hanabi) %></td>
+                  <td class = "px-2 text-wrap"><%= hanabi.address %></td>
+                  <td class = "px-2 text-center">¥<%= hanabi.body %>-</td>
+                  <td class = "px-2 text-center"><%= hanabi.updated_at.strftime("%Y年%m月%d日") %></td>
+                </div>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>  
+      </table>
+  </div>
+</div>

@@ -1,5 +1,17 @@
-<center>
-  <h1>きれいな花火　一緒に観よ</h1>
-  <h2>欠けた花火はもう嫌だ。　まあるい花火が見れるスポット共有サイト</h2>
-  <p>ここがおすすめ！　花火スポット！</p>
-</center>
+<% if user_signed_in? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+      </div>
+      <div class="col-md-3">
+        <p><%= link_to "新しいスポットを登録する", new_hanabi_path, class: "btn btn-primary btn-lg btn-record" %></p>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <center>
+    <h1>きれいな花火　一緒に観よ</h1>
+    <h2>欠けた花火はもう嫌だ。　まあるい花火が見れるスポット共有サイト</h2>
+    <p>ここがおすすめ！　花火スポット！</p>
+  </center>
+<% end %>
